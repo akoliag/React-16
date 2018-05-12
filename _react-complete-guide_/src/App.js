@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
+
 class App extends Component {
   state = {
     persons: [
@@ -37,14 +38,23 @@ class App extends Component {
   }
 
   render() {
+
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     return (
       <div className="App">
         <h1>This is a React App</h1>
         <p>It is really working!</p>
-        <button onClick={ () => this.switchNameHandler("Maximilian!!")}>Switch Name</button>
-        //when using an arrow function it automatically adds a return keyword
-        //in fornt of the code that goes directly after the arrow if it's all
-        //written in one line, in handler call we provide the argument we want to show
+        <button
+        style={style}
+        onClick={ () => this.switchNameHandler("Maximilian!!")}>Switch Name</button>
+
         <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}/>
@@ -61,8 +71,14 @@ class App extends Component {
 }
 
 export default App;
+//if we use inline style the style is scoped to the component it's passed only
+
 //state is available only class extending Component, it's not available
 //in function component
+
+//when using an arrow function it automatically adds a return keyword
+//in fornt of the code that goes directly after the arrow if it's all
+//written in one line, in handler call we provide the argument we want to show
 
 //this.switchNameHandler() would automatically execute it once React renders it to the DOM
 //this.switchNameHandler - just passes the reference of this handler and this is what we need in here
