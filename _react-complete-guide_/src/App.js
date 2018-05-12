@@ -12,13 +12,13 @@ class App extends Component {
   }
 
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     //console.log('Was clicked!');
     //Don't manipulate the state like this: this.state.persons[0].name = 'Maximilian';
     //instead use a special method:
     this.setState({
       persons: [
-        {name: 'Maximilian', age: 28},
+        {name: newName, age: 28},
         {name: 'Agnieszka', age: 30},
         {name: 'Steven', age: 21}
       ]
@@ -31,10 +31,20 @@ class App extends Component {
       <div className="App">
         <h1>This is a React App</h1>
         <p>It is really working!</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>My Hobbies: Racing and Sailing</Person>
+        <button onClick={ () => this.switchNameHandler("Maximilian!!")}>Switch Name</button>
+        //when using an arrow function it automatically adds a return keyword
+        //in fornt of the code that goes directly after the arrow if it's all
+        //written in one line, in handler call we provide the argument we want to show
+        <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}/>
+        <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}/>
+        <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age} click={this.switchNameHandler.bind(this, "Max!")}>
+            My Hobbies: Racing and Sailing</Person>
       </div>
     );
   }

@@ -6,12 +6,13 @@ import React from 'react';
 const  person = (props) => {
   return (
     <div>
-      <p>I am {props.name} and I am {props.age}!</p>
+      <p onClick={props.click}>I am {props.name} and I am {props.age}!</p>
       <p>{props.children}</p>
     </div>
   )
 };
-
+//we can pass methods also as props so we can call the method that changes the state
+//in another component which does not have a direct access to the state
 export default person;
 
 //children props refers to every element that goes between opening and closing
