@@ -9,7 +9,8 @@ class App extends Component {
       {name: 'Max', age: 28},
       {name: 'Aga', age: 30},
       {name: 'Steve', age: 21}
-    ]
+    ],
+    showPersons: false
   }
 
 
@@ -37,6 +38,12 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  }
+//showPersons equals to what doesShow is not
+
   render() {
 
     const style = {
@@ -52,25 +59,32 @@ class App extends Component {
         <h1>This is a React App</h1>
         <p>It is really working!</p>
         <button
-        style={style}
-        onClick={ () => this.switchNameHandler("Maximilian!!")}>Switch Name</button>
-
-        <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}/>
-        <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age} changed={this.nameChangedHandler}/>
-        <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age} click={this.switchNameHandler.bind(this, "Max!")}>
-            My Hobbies: Racing and Sailing</Person>
+          style={style}
+          onClick={this.togglePersonsHandler}>Toggle
+        </button>
+        {
+          this.state.showPersons === true ?
+            <div>
+              <Person
+                  name={this.state.persons[0].name}
+                  age={this.state.persons[0].age}/>
+              <Person
+                  name={this.state.persons[1].name}
+                  age={this.state.persons[1].age} changed={this.nameChangedHandler}/>
+              <Person
+                  name={this.state.persons[2].name}
+                  age={this.state.persons[2].age} click={this.switchNameHandler.bind(this, "Max!")}>
+                  My Hobbies: Racing and Sailing</Person>
+            </div> : null
+          }
       </div>
     );
   }
 }
 
 export default App;
+//when we enclose the div in curly braces, we can use JS expressions between them
+//e.g ternary operator but not the standard if statement
 //if we use inline style the style is scoped to the component it's passed only
 
 //state is available only class extending Component, it's not available
