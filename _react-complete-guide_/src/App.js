@@ -28,11 +28,14 @@ class App extends Component {
   // }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    const persons = this.state.persons.slice();
     persons.splice(personIndex, 1);
     this.setState({persons: persons})
   }
 
+  //slice without an argument simply copies the object or array and returns a new one
+  //in the assigned variable - the alternative to this is [...this.state.persons]
+  //- spread operator
   nameChangedHandler = (event) => {
     this.setState({
       persons: [
