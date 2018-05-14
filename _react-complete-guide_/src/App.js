@@ -6,9 +6,9 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      {name: 'Max', age: 28},
-      {name: 'Aga', age: 30},
-      {name: 'Steve', age: 21}
+      { id: 'asf1', name: 'Max', age: 28},
+      { id: 'asf2', name: 'Aga', age: 30},
+      { id: 'asf3', name: 'Steve', age: 21}
     ],
     showPersons: false
   }
@@ -72,7 +72,8 @@ class App extends Component {
             return <Person
               click={ () => this.deletePersonHandler(index)}
               name={person.name}
-              age={person.age} />
+              age={person.age}
+              key={person.id} />
           })}
         </div>
       );
@@ -93,15 +94,19 @@ class App extends Component {
 }
 
 export default App;
+//if every element has a unique key React can use them to compare future elements
+//with the past ones and only update the DOM in places it needs to be updated.
+
 //when we enclose the div in curly braces, we can use JS expressions between them
 //e.g ternary operator but not the standard if statement
+
 //if we use inline style the style is scoped to the component it's passed only
 
-//state is available only class extending Component, it's not available
+//state is available only as class extending Component, it's not available
 //in function component
 
 //when using an arrow function it automatically adds a return keyword
-//in fornt of the code that goes directly after the arrow if it's all
+//in front of the code that goes directly after the arrow if it's all
 //written in one line, in handler call we provide the argument we want to show
 
 //this.switchNameHandler() would automatically execute it once React renders it to the DOM
