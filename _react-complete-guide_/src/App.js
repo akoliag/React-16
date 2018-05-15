@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 import './App.css';
 import Person from './Person/Person';
 
@@ -67,9 +68,13 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
-
+//we can add :hover thanks to Radium
     let persons = null;
 
     if (this.state.showPersons) {
@@ -87,6 +92,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'green';
+      style[':hover'] = {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let classes = [];
@@ -111,7 +120,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
 //if every element has a unique key React can use them to compare future elements
 //with the past ones and only update the DOM in places it needs to be updated.
 
