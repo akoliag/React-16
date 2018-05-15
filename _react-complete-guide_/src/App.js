@@ -36,14 +36,21 @@ class App extends Component {
   //slice without an argument simply copies the object or array and returns a new one
   //in the assigned variable - the alternative to this is [...this.state.persons]
   //- spread operator
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        {name: "Max", age: 28},
-        {name: event.target.value, age: 30},
-        {name: 'Steven', age: 21}
-      ]
-    })
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+      const person = {
+        ...this.state.persons[personIndex]
+      };
+
+      person.name = event.target.value;
+
+      const persons = [...this.state.persons];
+      persons[personIndex] = person;
+
+    this.setState({persons: persons})
   }
 
   togglePersonsHandler = () => {
@@ -73,7 +80,8 @@ class App extends Component {
               click={ () => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-              key={person.id} />
+              key={person.id}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div>
       );
