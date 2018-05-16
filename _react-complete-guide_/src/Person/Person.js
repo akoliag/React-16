@@ -1,10 +1,18 @@
 //creating a functional (stateless) Component with ES6 arrow function
 
 import React from 'react';
+import Radium, {StyleRoot} from 'radium';
 import './Person.css';
 
 //props allows us to manage properties of the component
 const  person = (props) => {
+    const style = {
+      '@media (min-width: 500px)': {
+          width: '450px'
+      }
+    };
+
+
   return (
     <div className="Person">
       <p onClick={props.click}>I am {props.name} and I am {props.age}!</p>
@@ -15,7 +23,7 @@ const  person = (props) => {
 };
 //we can pass methods also as props so we can call the method that changes the state
 //in another component which does not have a direct access to the state
-export default person;
+export default Radium(person);
 
 //children props refers to every element that goes between opening and closing
 //tag of our component - in this case hobbies
