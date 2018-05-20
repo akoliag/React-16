@@ -61,16 +61,8 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      backgroundColor: 'blue',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-    };
-//we can add :hover thanks to Radium
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -86,7 +78,7 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'green';
+      btnClass = classes.Red;
     }
 
     let assignedClasses = [];
@@ -102,8 +94,8 @@ class App extends Component {
         <h1>This is a React App</h1>
         <p className={assignedClasses.join(' ')}>It is really working!</p>
         <button
-          style={style}
-          onClick={this.togglePersonsHandler}>Toggle
+          className={btnClass}
+          onClick={this.togglePersonsHandler}>Toggle Persons
         </button>
           {persons}
       </div>
