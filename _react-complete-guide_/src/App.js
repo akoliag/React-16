@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 
@@ -89,18 +89,18 @@ class App extends Component {
       style.backgroundColor = 'green';
     }
 
-    let classes = [];
+    let assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>This is a React App</h1>
-        <p className={classes.join(' ')}>It is really working!</p>
+        <p className={assignedClasses.join(' ')}>It is really working!</p>
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Toggle
@@ -129,3 +129,6 @@ export default App;
 
 //this.switchNameHandler() would automatically execute it once React renders it to the DOM
 //this.switchNameHandler - just passes the reference of this handler and this is what we need in here
+
+//this: <div className={classes.App}> is possible after unlocking css modules and importing classes
+//from App.css to App.js
