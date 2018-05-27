@@ -4,6 +4,10 @@ import classes from './Cockpit.css';
 
 const cockpit = (props) => {
   let assignedClasses = [];
+  let btnClass= '';
+    if (props.showPersons) {
+      btnClass = classes.Red;
+    }
     if (props.persons.length <= 2) {
       assignedClasses.push(classes.red);
     }
@@ -17,7 +21,7 @@ const cockpit = (props) => {
       <p className={assignedClasses.join(' ')}>It is really working!</p>
       <button
         className={btnClass}
-        onClick={this.togglePersonsHandler}>Toggle Persons
+        onClick={props.cliked}>Toggle Persons
       </button>
     </div>
   );
