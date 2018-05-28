@@ -3,7 +3,7 @@
 import React from 'react';
 import classes from'./Person.css';
 
-//props allows us to manage properties of the component
+
 const  person = (props) => {
   return (
     <div className={classes.Person}>
@@ -13,6 +13,7 @@ const  person = (props) => {
     </div>
   )
 };
+//props allows us to manage properties of the component
 //we can pass methods also as props so we can call the method that changes the state
 //in another component which does not have a direct access to the state
 export default person;
